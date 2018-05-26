@@ -5,7 +5,7 @@
 		$updatetitle = $_POST['updatetitle'];
 		$title = $_POST['title'];
 		$content = $_POST['content'];
-
+		
 		if (empty($title) || empty($content)) {
 			header('Location: update.php?=error');
 			exit();
