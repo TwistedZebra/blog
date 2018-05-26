@@ -53,12 +53,10 @@
 		<div class="container">
 			<h1>Update post</h1>
 			<form method="post" action="update.php" >
-
-
-				<input type="text" name="updatetitle" placeholder="">
-
 				<br>
-    			<input type="text" name="title" class="form-control" placeholder="New title" >
+				<input type="text" name="updatetitle" placeholder="Typ the post you want to edit" class="form-control" autocomplete="off">
+				<br>
+    			<input type="text" name="title" class="form-control" placeholder="New title" autocomplete="off">
     			<br>
     			<textarea name="content" rows="5" cols="60"  class="form-control" placeholder="Enter post"></textarea>
     			<br>

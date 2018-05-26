@@ -49,6 +49,7 @@
 	<div class="container-fluid">
 		<div class="container">
 			<h1>Delete</h1>
+			<br>
 			<form method="post" action="delete.php">
 				<select name="deltitle" class="form-control">
 					<?php foreach ($posts as $post) { ?>
