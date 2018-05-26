@@ -21,7 +21,7 @@
 				<a class="nav-link" href="public/index.php">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Posts</a>
+				<a class="nav-link" href="public/posts.php">Posts</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">Admin Panel</a>

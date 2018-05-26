@@ -44,7 +44,7 @@
 			<div class="posts">
 				<h1><?php echo $post['title']?></h1>
 				<p><?php echo $post['content'] ?></p>
-				<p><?php echo $post['author'] ?></p>
+				<p><b><i><?php echo $post['author'] ?></i></b></p>
 				<br>
 				<hr>
 			</div>
