@@ -1,14 +1,18 @@
-<?php 
+<?php
 	require '../config.php';
 
-	try{
-		$posts = $connection->prepare('SELECT * FROM posts ORDER BY created_at DESC');
-		$posts->execute([]);
-		$posts = $posts->fetchAll(PDO::FETCH_ASSOC);
-	}catch(PDOException $e){
-		dd($e->getMessage());
-	}
-	
+
+	$posts = $connection->prepare('SELECT * FROM posts ORDER BY created_at DESC');
+	$posts->execute([]);
+	$posts = $posts->fetchAll(PDO::FETCH_ASSOC);
+
+	$stmt = $connection->prepare('SELECT * FROM posts');
+	$stmt->execute([]);
+  	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  	$num_rows = count($rows);
+
+
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +42,7 @@
 	<div class="container-fluid">
 		<div class="container">
 			<br>
-			<h1>All posts</h1>
+			<h1>All posts, total post on page: <?php echo $num_rows; ?></h1>
 			<hr>
 			<?php foreach ($posts as $post) { ?>
 			<div class="posts">
@@ -57,6 +61,6 @@
 <script>
   document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
   ':35729/livereload.js?snipver=1"></' + 'script>')
-</script> 
+</script>
 </body>
 </html>
