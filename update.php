@@ -52,7 +52,7 @@
 				<br>
     			<input type="text" name="title" class="form-control" placeholder="New title" >
     			<br>
-    			<textarea name="content" rows="5" cols="60" placeholder="Enter post"></textarea>
+    			<textarea name="content" rows="5" cols="60"  class="form-control" placeholder="Enter post"></textarea>
     			<br>
     			<br>
   				<button type="submit" name="submit" class="btn btn-success">Update post</button>

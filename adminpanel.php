@@ -52,7 +52,7 @@
   				<div class="card-body">
     				<h5 class="card-title">Update post</h5>
     				<p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniamdolor sitdolor sitdolor sitdolor sitdolor sit.</p>
-    				<a href="#" class="btn btn-primary">Update post</a>
+    				<a href="update.php" class="btn btn-primary">Update post</a>
   				</div>
 			</div>
 		</div>
