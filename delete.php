@@ -1,20 +1,21 @@
 <?php 
 	require 'config.php';
 
+		$posts = $connection->prepare('SELECT * FROM posts');
+		$posts->execute([]);
+		$posts = $posts->fetchAll(PDO::FETCH_ASSOC);
+
 	if (isset($_POST['submit'])) {
 		
-		$title = $_POST['title'];
+		$id = $_POST['deltitle'];
 		
 
-		if (empty($title)) {
-			header('Location: delete.php?=error');
-			exit();
-		} else {
-			$deleterecord = $connection->prepare('DELETE FROM posts WHERE title = :title');
-			$deleterecord->execute(['title' => $title]);
-			
-			header('Location: delete.php?=success');
-		}
+	
+		$deleterecord = $connection->prepare('DELETE FROM posts WHERE id = :id');
+		$deleterecord->execute(['id' => $id]);
+		header('Location: delete.php?=success');
+		
+		
 		
 	}
  ?>
@@ -49,7 +50,11 @@
 		<div class="container">
 			<h1>Delete</h1>
 			<form method="post" action="delete.php">
-				<input class="form-control" type="text" name="title" placeholder="Enter title">
+				<select name="deltitle" class="form-control">
+					<?php foreach ($posts as $post) { ?>
+					<option value="<?php echo $post['id']?>"><?php echo $post['id'].' - '.$post['title']; ?></option>
+					<?php } ?>
+				</select>
     			<br>
   				<button type="submit" name="submit" class="btn btn-danger">Delete</button>
 			</form>

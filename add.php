@@ -7,15 +7,23 @@
 		$author = $_POST['author'];
 		$content = $_POST['content'];
 
+
+		$stmt = $connection->prepare('SELECT * FROM posts WHERE title = :title');
+		$stmt->execute(['title' => $title]);
+  		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  		$num_rows = count($rows);
+  		
 		if (empty($author) || empty($title) || empty($content) || !is_string($author)) {
 			header('Location: add.php?=error');
 			exit();
-		} else {
+		} elseif ($num_rows > 0) {
+			header('Location: add.php?=error');
+			exit();
+		} else{
 			$addcontent = $connection->prepare('INSERT INTO posts(author, title, content) VALUES(:author, :title, :content)');
 			$addcontent->execute(['author' => $author, 'title' => $title, 'content' => $content]);
 			header('Location: add.php?=success');
 		}
-		
 	}
  ?>
 

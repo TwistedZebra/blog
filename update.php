@@ -1,10 +1,14 @@
 <?php 
 	require 'config.php';
 
+
+
+
 	if (isset($_POST['submit'])) {
 		$updatetitle = $_POST['updatetitle'];
 		$title = $_POST['title'];
 		$content = $_POST['content'];
+		$id = $_POST['id'];
 		
 		if (empty($title) || empty($content)) {
 			header('Location: update.php?=error');
@@ -12,6 +16,7 @@
 		} else {
 			$updatedcontent = $connection->prepare('UPDATE posts SET title = :title , content = :content WHERE title = :updatetitle');
 			$updatedcontent->execute(['title' => $title, 'content'=> $content, 'updatetitle' => $updatetitle]);
+
 			header('Location: update.php?=success');
 		}
 		
@@ -48,7 +53,10 @@
 		<div class="container">
 			<h1>Update post</h1>
 			<form method="post" action="update.php" >
-				<input type="text" name="updatetitle" class="form-control" placeholder="Wich post do you wish to update">
+
+
+				<input type="text" name="updatetitle" placeholder="">
+
 				<br>
     			<input type="text" name="title" class="form-control" placeholder="New title" >
     			<br>
