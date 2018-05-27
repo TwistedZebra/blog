@@ -41,7 +41,7 @@
 			<div class="posts">
 				<h1><?php echo $blog['title']?></h1>
 				<hr>
-				<p><i><?php  echo $blog['shortdescription'];?></i></p>
+				<p><b><i><?php  echo $blog['shortdescription'];?></i></b></p>
 				<p><?php echo $blog['content'] ?></p>
 				<p><b><i><?php echo $blog['author'] ?></i></b></p>
 				<p>Posted at: <?php echo $blog['created_at']; ?></p>
