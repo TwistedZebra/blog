@@ -31,6 +31,7 @@
 	<br><br><br><br><br><br><br>
 	<div class="container-fluid">
 		<div class="container">
+			<h1 class="admintext">ADMIN PANEL</h1>
 			<div class="card" style="width: 18rem;">
   				<img class="card-img-top" src="image/delete.jpg" alt="Card image cap">
   				<div class="card-body">

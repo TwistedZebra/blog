@@ -1,0 +1,3 @@
+RewriteEngine On
+
+RewriteRule ^blogpage/(.*)$ blogpage.php?slug=$1 [NC,l]

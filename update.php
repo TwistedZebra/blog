@@ -1,7 +1,7 @@
 <?php 
 	require 'config.php';
 
-
+	
 
 
 	if (isset($_POST['submit'])) {
@@ -10,7 +10,7 @@
 		$content = $_POST['content'];
 		$id = $_POST['id'];
 		
-		if (empty($title) || empty($content)) {
+		if (empty($title)) {
 			header('Location: update.php?=error');
 			exit();
 		} else {

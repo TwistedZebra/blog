@@ -6,6 +6,8 @@
 		$title = $_POST['title'];
 		$author = $_POST['author'];
 		$content = $_POST['content'];
+		$slug = $_POST['slug'];
+		$shortdescription = $_POST['shortdescription'];
 
 
 		$stmt = $connection->prepare('SELECT * FROM posts WHERE title = :title');
@@ -20,8 +22,8 @@
 			header('Location: add.php?=error');
 			exit();
 		} else{
-			$addcontent = $connection->prepare('INSERT INTO posts(author, title, content) VALUES(:author, :title, :content)');
-			$addcontent->execute(['author' => $author, 'title' => $title, 'content' => $content]);
+			$addcontent = $connection->prepare('INSERT INTO posts(author, title, content, slug, shortdescription) VALUES(:author, :title, :content, :slug, :shortdescription)');
+			$addcontent->execute(['author' => $author, 'title' => $title, 'content' => $content, 'slug' => $slug, 'shortdescription' => $shortdescription]);
 			header('Location: add.php?=success');
 		}
 	}
@@ -61,6 +63,11 @@
     			<input type="text" name="title" class="form-control" placeholder="Title" autocomplete="off">
     			<br>
     			<input type="text" name="author" class="form-control" placeholder="Author" autocomplete="off">
+    			<br>
+    			<input type="text" name="slug"  class="form-control" placeholder="Slug" autocomplete="off">
+    			<br>
+    			<br>
+    			<textarea name="shortdescription" rows="1" cols="60" class="form-control" placeholder="Enter shortdescription"></textarea>
     			<br>
     			<textarea name="content" rows="5" cols="60" class="form-control placeholder="Enter post">Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi.</textarea>
     			<br>

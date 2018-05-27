@@ -1,20 +1,27 @@
 body{
 	height: 100vh;
+	
 }
 a.nav-link{
 	color: white;
 }
 .container-fluid{
-	/*border: solid 1px;*/
+	
 	height: 100vh;
 }
 
 .container {
 	/*border: solid 1px black;*/
 	height: 100vh;
+	
 }
 
 .card {
 	float: right;
 	margin: 40px;
 }
+
+.admintext{
+	text-align: center;
+}
+

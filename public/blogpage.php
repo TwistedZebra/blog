@@ -1,21 +1,20 @@
 <?php 
-	require '../config.php';
 
-	try{
-		$posts = $connection->prepare('SELECT * FROM posts ORDER BY created_at DESC LIMIT 5');
-		$posts->execute([]);
-		$posts = $posts->fetchAll(PDO::FETCH_ASSOC);
-	}catch(PDOException $e){
-		dd($e->getMessage());
-	}
-	
+	require '../config.php';
+	$array =$_GET;
+	$imploded = implode('', $array);
+	$blog = $connection->prepare('SELECT *FROM posts WHERE slug = :slug');
+
+
+	$blog->execute(['slug' => $imploded]);
+	$blog = $blog->fetch(PDO::FETCH_ASSOC);
  ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Blog</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
 
@@ -25,30 +24,30 @@
 		</div>
 		<ul class="nav">
 			<li class="nav-item">
-				<a class="nav-link" href="index.php">Home</a>
+				<a class="nav-link" href="../index.php">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="posts.php">Posts</a>
+				<a class="nav-link" href="../posts.php">Posts</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="loginpanel.php">Login Panel</a>
+				<a class="nav-link" href="../loginpanel.php">Login Panel</a>
 			</li>
 		</ul>
 	</div>
 	<div class="container-fluid">
 		<div class="container">
 			<br>
-			<h1>5 Newest posts</h1>
-			<hr>
-			<?php foreach ($posts as $post) { ?>
+			
 			<div class="posts">
-				<a style="color: black; text-decoration-line: none" href="blogpage/<?php echo $post['slug']; ?>"><h1><?php echo $post['title']?></h1></a>
-				<p><i><?php echo $post['shortdescription'] ?></i></p>
-				<p><b><i><?php echo $post['author'] ?></i></b></p>
+				<h1><?php echo $blog['title']?></h1>
+				<hr>
+				<p><i><?php  echo $blog['shortdescription'];?></i></p>
+				<p><?php echo $blog['content'] ?></p>
+				<p><b><i><?php echo $blog['author'] ?></i></b></p>
+				<p>Posted at: <?php echo $blog['created_at']; ?></p>
 				<br>
 				<hr>
 			</div>
-			<?php } ?>
 		</div>
 	</div>
 
