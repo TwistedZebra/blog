@@ -6,7 +6,13 @@
 		$username = $_POST['email'];
 		$password = $_POST['password'];
 
+		$useremail = 'dennis@bloggerworld.com';
+		$passwordEmail = 'admin';
+
 		$useremail = 'admin@bloggerworld.com';
+		$passwordEmail = 'admin';
+
+		$useremail = 'amer@bloggerworld.com';
 		$passwordEmail = 'admin';
 
 		if ($useremail === $username && $passwordEmail === $password) {
